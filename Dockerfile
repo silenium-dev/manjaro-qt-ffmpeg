@@ -9,4 +9,6 @@ RUN pacman -S --noconfirm cmake
 RUN pacman -S --noconfirm ffmpeg ffnvcodec-headers
 RUN pacman -S --noconfirm openal
 
+ENTRYPOINT /bin/bash
+
 CMD ["/bin/bash"]
