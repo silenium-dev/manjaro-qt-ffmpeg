@@ -8,6 +8,7 @@ RUN pacman -S --noconfirm cmake
 
 RUN pacman -S --noconfirm ffmpeg ffnvcodec-headers
 RUN pacman -S --noconfirm openal
+RUN pacman -S --noconfirm glu
 
 ENTRYPOINT /bin/bash
 
