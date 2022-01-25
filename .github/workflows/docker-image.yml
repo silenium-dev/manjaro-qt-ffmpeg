@@ -1,0 +1,22 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ main, qt5 ]
+  pull_request:
+    branches: [ main, qt5 ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Extract branch name
+      shell: bash
+      run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+      id: extract_branch
+    - name: Build and push the Docker image
+      run: docker buildx build --platform=linux/amd64,linux/arm64 . --file Dockerfile --tag sdc0/manjaro-qt-ffmpeg:${{ steps.extract_branch.outputs.branch }}-$(date +%s) --tag sdc0/manjaro-qt-ffmpeg:${{ steps.extract_branch.outputs.branch }}-latest --push
