@@ -13,15 +13,15 @@ on:
     # Publish semver tags as releases.
     tags: [ 'v*.*.*' ]
   pull_request:
-    branches: [ main ]
+    branches: [ main, qt5 ]
   workflow_dispatch:
-    branches: [ main ]
+    branches: [ main, qt5 ]
 
 env:
   # Use docker.io for Docker Hub if empty
   REGISTRY: docker.io
   # github.repository as <account>/<repo>
-  IMAGE_NAME: sdc0/manjaro-qt6-ffmpeg
+  IMAGE_NAME: sdc0/manjaro-qt-ffmpeg
 
 
 jobs:
@@ -43,8 +43,8 @@ jobs:
         uses: docker/login-action@28218f9b04b4f3f62068d7b6ce6ca5b26e35336c
         with:
           registry: ${{ env.REGISTRY }}
-          username: ${{ secrets.DockerHubUser }}
-          password: ${{ secrets.DockerHubPW }}
+          username: ${{ secrets.DOCKERHUBUSER }}
+          password: ${{ secrets.DOCKERHUBPW }}
 
       # Extract metadata (tags, labels) for Docker
       # https://github.com/docker/metadata-action
