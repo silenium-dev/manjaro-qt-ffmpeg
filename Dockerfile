@@ -2,7 +2,7 @@ FROM manjarolinux/base
 
 RUN pacman -Syu --noconfirm
 RUN pacman -S --noconfirm base-devel
-RUN pacman -S --noconfirm qt6
+RUN pacman -S --noconfirm qt5
 RUN pacman -S --noconfirm vulkan-devel
 RUN pacman -S --noconfirm cmake
 
